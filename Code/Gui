@@ -1,0 +1,77 @@
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class GuiName extends JFrame{
+	
+		private JLabel labelNamensfeld;
+		private JTextField fieldEingabe;
+		private JButton buttonFertig;
+		private JButton buttonRandom;
+		
+		public GuiName(String titel) {
+			
+			setTitle(titel);
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setLayout(new FlowLayout());
+			
+			setSize(250, 125);
+			setResizable(true);
+			
+			initComponents();
+			
+			add(labelNamensfeld);
+			add(fieldEingabe);
+			add(buttonFertig);
+			add(buttonRandom);
+			
+			setLocationRelativeTo(null);
+			setVisible(true);
+			
+		}
+		
+		private void initComponents() {
+			
+			labelNamensfeld = new JLabel("Hier bitte Namen eingeben:");
+			fieldEingabe = new JTextField(20);
+			
+			buttonFertig = new JButton("Fertig");
+			buttonFertig.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					String Name = fieldEingabe.getText().trim();
+					
+					if(Name.isEmpty()) {
+						JOptionPane.showMessageDialog(null,"Es wurde kein Name eingegeben", "Fehler", JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null,"Hallo " + Name + ", LG Julian", "CoolerName", JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+					fieldEingabe.setText("");
+					
+				}
+			});
+			
+			buttonRandom = new JButton("Name vergessen?");
+			buttonRandom.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					JOptionPane.showMessageDialog(null,"Pech gehabt", "Name Vergessen", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
+			});
+			
+		}
+
+}
