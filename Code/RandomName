@@ -1,0 +1,15 @@
+import java.util.Random;
+
+public class RandomName {
+
+    public String GenerateName() {
+        String[] arr = {"Tim", "Florian", "Aren", "Paul", "Bastian", "Isabell", "Mona", "Marie", "Anna", "Helena"};
+        int lArr = arr.length;
+
+        Random rand = new Random();
+        int i = rand.nextInt(lArr);
+
+        return arr[i];
+    }
+
+}
